@@ -22,23 +22,35 @@
         <h3 class="text-center mb-4 text-monospace">Digite abaixo os seus comentários:</h3>
 
         <div class="form-group">
-          <label for="titulo" class="text-monospace">Título:</label>
-          <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Digite o título da postagem">
+          <label for="nome" class="text-monospace">Nome:</label>
+          <input type="text" name="nome" id="nome" class="form-control" placeholder="Digite o seu nome" [(ngModel)]='post.nome'>
         </div>
 
         <div class="form-group">
-          <label for="texto" class="text-monospace">Texto:</label>
-          <textarea name="texto" id="texto" cols="30" rows="4" class="form-control" placeholder="Digite a sua mensagem"></textarea>
+          <label for="mensagem" class="text-monospace">Mensagem:</label>
+          <textarea name="mensagem" id="mensagem" cols="30" rows="4" class="form-control" placeholder="Digite a sua mensagem" [(ngModel)]='post.mensagem'></textarea>
         </div>
 
         <div class="d-flex justify-content-end mt-3">
-          <button type="button" class="btn btn-outline-info w-25">Publicar</button>
+          <button type="button" class="btn btn-outline-info w-25" (click)="sendPost()">Publicar</button>
         </div>
       </div>
 
       <hr class="mt-5 mb-5">
 
       <h3 class="text-center mb-5 text-monospace">Comentários adicionados</h3>
+
+      <div class="container">
+        <div class="card mb-4" *ngFor="let post of listPost">
+          <div class="card-header">
+            <h5 class="card-title">{{post.id}}</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{post.nome}}</p>
+            <p class="card-text">{{post.mensagem}}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
